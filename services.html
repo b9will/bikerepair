@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mobile Services & Pricing | Okafo and Sons Bicycle Service and Repair</title>
+  <meta name="description" content="Mobile bike repair services and typical pricing in Pickering, ON. Transparent labour ranges, tune-ups, flats, brakes, and more." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span><span>Okafo and Sons</span></a>
+      <nav class="navlinks" aria-label="Primary">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="services.html">Mobile Services & Pricing</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="tel:+14168887566">Call: 416-888-7566</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <div class="kicker reveal"><span class="dot" aria-hidden="true"></span> Mobile service • Pickering, ON</div>
+        <h1 class="reveal">Services & typical pricing</h1>
+        <p class="lede reveal">
+          Pricing ranges are typical labour estimates (CAD). Parts are extra. We confirm scope + estimate before paid work.
+        </p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+          <a class="btn" href="tel:+14168887566">Call 416-888-7566</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="reveal">Common mobile repairs</h2>
+        <p class="sub reveal">Fast fixes and safety checks—completed on-site.</p>
+
+        <table class="table reveal" aria-label="Service pricing table">
+          <thead>
+            <tr><th>Service</th><th>What’s included</th><th>Typical range</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Flat repair</strong></td>
+              <td>Tube swap or patch (if possible), tyre inspection, pressure check</td>
+              <td>$20–$40 + tube/parts</td>
+            </tr>
+            <tr>
+              <td><strong>Brake adjustment</strong></td>
+              <td>Align, tension, pad check, quick safety test</td>
+              <td>$25–$45</td>
+            </tr>
+            <tr>
+              <td><strong>Brake pads (install)</strong></td>
+              <td>Install pads + adjust (pads extra)</td>
+              <td>$30–$55 + pads</td>
+            </tr>
+            <tr>
+              <td><strong>Shifting adjustment</strong></td>
+              <td>Indexing, limits, cable tension, test shift</td>
+              <td>$30–$55</td>
+            </tr>
+            <tr>
+              <td><strong>Basic tune-up</strong></td>
+              <td>Brakes + shifting check, bolts, tyre pressure, safety inspection</td>
+              <td>$75–$120</td>
+            </tr>
+            <tr>
+              <td><strong>Full tune-up</strong></td>
+              <td>Deeper adjustments, drivetrain clean (light), safety inspection, test ride</td>
+              <td>$140–$220</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="small reveal" style="margin-top:14px;">
+          Mobile call-out fees can vary by distance and timing. We’ll confirm when you book.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="card reveal">
+          <h3>What to expect on-site</h3>
+          <ul class="list">
+            <li>We arrive with tools and common parts.</li>
+            <li>We diagnose and confirm pricing before work.</li>
+            <li>We finish with a safety check and quick test (where possible).</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>Best info for fast booking</h3>
+          <ul class="list">
+            <li>Bike type (road, commuter, MTB, kids, e-bike)</li>
+            <li>Issue details + how long it’s been happening</li>
+            <li>Your location in Pickering (or nearby)</li>
+            <li>Your preferred time window</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="small">
+        <strong>Okafo and Sons Bicycle Service and Repair</strong><br />
+        Pickering, ON<br />
+        <a href="tel:+14168887566">416-888-7566</a>
+      </div>
+      <div class="small">
+        Mobile service • By appointment<br />
+        © <span id="year"></span> Okafo and Sons
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Okafo and Sons Bicycle Service and Repair</title>
+  <meta name="description" content="Contact Okafo and Sons for mobile bicycle repair in Pickering. Call 416-888-7566 or request a quote." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span><span>Okafo and Sons</span></a>
+      <nav class="navlinks" aria-label="Primary">
+        <a data-nav href="index.html">Home</a>
+        <a data-nav href="services.html">Mobile Services & Pricing</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="tel:+14168887566">Call: 416-888-7566</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <div class="kicker reveal"><span class="dot" aria-hidden="true"></span> Mobile repair • Pickering, ON</div>
+        <h1 class="reveal">Contact</h1>
+        <p class="lede reveal">
+          Call for the fastest response. For quotes, include your bike type, issue, and location.
+        </p>
+        <div class="cta-row reveal">
+          <a class="btn btn-primary" href="tel:+14168887566">Call 416-888-7566</a>
+          <a class="btn btn-ghost" href="services.html">View Pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="card reveal">
+          <h3>Request a mobile quote</h3>
+
+          <!-- Replace action with your form handler (Netlify, Formspree, Webflow, etc.) -->
+          <form action="#" method="post">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" autocomplete="tel" required />
+            </div>
+
+            <div class="split" style="grid-template-columns: 1fr 1fr;">
+              <div>
+                <label for="bike">Bike type</label>
+                <select id="bike" name="bike" required>
+                  <option value="">Select one</option>
+                  <option>Road</option>
+                  <option>Hybrid / Commuter</option>
+                  <option>Mountain</option>
+                  <option>Kids</option>
+                  <option>E-bike</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="when">Preferred time</label>
+                <select id="when" name="when" required>
+                  <option value="">Select one</option>
+                  <option>Today</option>
+                  <option>Tomorrow</option>
+                  <option>This week</option>
+                  <option>Next week</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="location">Location (Pickering)</label>
+              <input id="location" name="location" placeholder="Neighbourhood / major intersection" required />
+            </div>
+
+            <div>
+              <label for="message">What’s going on?</label>
+              <textarea id="message" name="message" placeholder="Example: rear tyre flat, brakes rubbing, shifting skipping…" required></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Send request</button>
+            <p class="small">Note: connect a form handler to receive submissions.</p>
+          </form>
+        </div>
+
+        <div class="stack">
+          <div class="card reveal" id="hours">
+            <h3>Hours</h3>
+            <p class="small">Mobile service is by appointment.</p>
+            <p><strong>Call:</strong> <a href="tel:+14168887566">416-888-7566</a></p>
+            <p><strong>Based in:</strong> Pickering, ON</p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Best info for a fast quote</h3>
+            <ul class="list">
+              <li>Bike type + approximate age</li>
+              <li>Issue details + any photos/video</li>
+              <li>Your location (Pickering or nearby)</li>
+              <li>Any deadline (commute, event, race)</li>
+            </ul>
+          </div>
+
+          <div class="card reveal">
+            <h3>Experience</h3>
+            <p>Over <strong>20 years</strong> of professional bicycle mechanic experience—repairs done safely, correctly, and efficiently.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="small">
+        <strong>Okafo and Sons Bicycle Service and Repair</strong><br />
+        Pickering, ON<br />
+        <a href="tel:+14168887566">416-888-7566</a>
+      </div>
+      <div class="small">
+        Mobile service • By appointment<br />
+        © <span id="year"></span> Okafo and Sons
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
