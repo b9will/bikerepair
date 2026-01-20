@@ -3,103 +3,144 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Okafo and Sons Bicycle Service and Repair | Mobile Bike Repair Pickering</title>
-  <meta name="description" content="Mobile bicycle service and repair in Pickering, ON. Flats, brakes, tune-ups, and safety checks. 20+ years professional mechanic experience. Call 416-888-7566." />
+  <title>Okafo and Son Professional Bicycle Repair | Mobile Bike Repair Pickering</title>
+  <meta name="description" content="Professional mobile bicycle repair in Pickering, ON. On-site service, scheduled drop-offs (appointment only), and pickup/drop-off available. 20+ years mechanic experience. Call 416-888-7566." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;550;650;750;850&family=Space+Grotesk:wght@500;650;750&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
   <header>
+    <!-- Alert bar -->
+    <div class="alertbar" data-alertbar>
+      <div class="container alertbar-inner">
+        <p><strong>Get your bike ready for spring.</strong> Save <strong>10%</strong> on all bookings before <strong>March 1</strong>.</p>
+        <button class="iconbtn" type="button" aria-label="Dismiss promo" data-alert-dismiss>✕</button>
+      </div>
+    </div>
+
     <div class="container nav">
       <a class="brand" href="index.html" aria-label="Home">
         <span class="mark" aria-hidden="true"></span>
-        <span>Okafo and Sons</span>
+        <span class="brand-name">Okafo and Son</span>
       </a>
 
-      <nav class="navlinks" aria-label="Primary">
-        <a data-nav href="index.html">Home</a>
-        <a data-nav href="services.html">Mobile Services & Pricing</a>
+      <nav class="nav-mid" aria-label="Primary">
+        <a data-nav href="services.html">Services & Pricing</a>
         <a data-nav href="contact.html">Contact</a>
-        <a class="btn btn-primary" href="tel:+14168887566">Call: 416-888-7566</a>
       </nav>
+
+      <div class="nav-right">
+        <a class="phone-link" href="tel:+14168887566" aria-label="Call 416-888-7566">416-888-7566</a>
+        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+
+        <!-- Weather pill (click opens modal) -->
+        <button class="weather-pill" type="button" data-weather-btn aria-haspopup="dialog" aria-label="Riding weather in Pickering">
+          <span class="wx-ic" aria-hidden="true"><span data-wx-icon>🌡️</span></span>
+          <span class="wx-meta">
+            <span class="wx-top"><span data-wx-temp>—</span></span>
+            <span class="wx-sub" data-wx-sub>Riding weather</span>
+          </span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="kicker"><span class="dot" aria-hidden="true"></span> Mobile bicycle repair in Pickering</div>
-          <h1>Bike repair that comes to you.</h1>
-          <p class="lede">
-            Flats, brakes, tune-ups, safety checks—done at your home, workplace, or wherever your ride is.
-            Backed by <strong>20+ years</strong> of professional bicycle mechanic experience.
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="tel:+14168887566">Call for Same-Day Options</a>
-            <a class="btn" href="contact.html">Request a Quote</a>
-            <a class="btn btn-ghost" href="services.html">See Services & Pricing</a>
+  <!-- Weather modal -->
+  <dialog data-weather-dialog aria-label="Riding weather details">
+    <div class="modal" role="document">
+      <div class="modal-head">
+        <h3>Riding weather</h3>
+        <button class="iconbtn" type="button" aria-label="Close weather" data-weather-close>✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="card">
+            <h3 style="margin:0 0 6px;">Pickering, ON</h3>
+            <p class="small" style="margin:0;">Current conditions (approx.)</p>
           </div>
-
-          <div class="section" style="padding: 26px 0 0;">
-            <div class="badges" aria-label="Highlights">
-              <span class="badge">Mobile repair</span>
-              <span class="badge">Transparent pricing</span>
-              <span class="badge">Family-run service</span>
-              <span class="badge">Safety-first</span>
+          <div class="card">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div style="font-size:30px;" aria-hidden="true"><span data-wx-icon>🌡️</span></div>
+              <div>
+                <div style="font-weight:900; font-size:1.3rem;"><span data-wx-temp>—</span></div>
+                <div class="small" data-wx-sub>Pickering • now</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <aside class="stack">
-          <div class="card reveal">
-            <h3>Mobile service area</h3>
-            <p>Pickering and nearby areas. Call to confirm availability for your location.</p>
-            <p class="small" style="margin-top:10px;"><strong>Bring the shop to your driveway.</strong></p>
-          </div>
-
-          <div class="card reveal" data-weather>
-            <h3>Weather (for riding)</h3>
-            <div class="weather" aria-live="polite">
-              <div class="weather-left">
-                <div class="weather-icon" aria-hidden="true"><span data-weather-icon>🌡️</span></div>
-                <div>
-                  <div class="weather-temp" data-weather-temp>—</div>
-                  <div class="small" data-weather-status>Loading…</div>
-                </div>
-              </div>
-              <a class="btn btn-ghost" href="contact.html#hours">Hours</a>
-            </div>
-          </div>
-
-          <div class="card reveal">
-            <h3>Fast help</h3>
-            <p><strong>Call:</strong> <a href="tel:+14168887566">416-888-7566</a></p>
-            <p><strong>Location:</strong> Pickering, ON</p>
-            <p class="small" style="margin-top:10px;">Tell us your bike type + issue + where the bike is.</p>
-          </div>
-        </aside>
+        <p class="small" style="margin-top:14px;">
+          For the fastest booking, include your location, bike type, and issue. Mobile service is appointment-only.
+        </p>
       </div>
-    </section>
+    </div>
+  </dialog>
+
+  <main id="main">
+    <section class="hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="kicker">
+        <span class="dot" aria-hidden="true"></span>
+        Pickering • Appointment-only • Mobile + Pickup/Drop-off
+      </div>
+
+      <h1>Back on the road faster, <br> with a bike that feels new again.</h1>
+
+      <p class="lede">
+        Professional repairs and tune-ups with convenient options: mobile on-site service, pickup & drop-off,
+        or scheduled drop-offs by appointment. Clear approvals, high-quality parts, and work done right.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+        <a class="btn btn-ghost" href="services.html">See Services & Pricing</a>
+      </div>
+
+      <div class="tags" aria-label="Highlights">
+        <span class="tag">20+ years experience</span>
+        <span class="tag">Parts approved first</span>
+        <span class="tag">Contactless option</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <section class="section">
       <div class="container">
-        <h2 class="reveal">What we fix</h2>
-        <p class="sub reveal">Practical, reliable repairs—focused on getting you riding safely.</p>
+        <h2 class="reveal">Service options</h2>
+        <p class="sub reveal">Choose what’s easiest: we come to you, we pick up, or you drop off by appointment.</p>
 
         <div class="grid-3">
-          <div class="card reveal">
-            <h3>Flats & Tyres</h3>
-            <p>Punctures, tube swaps, tyre installs, pressure checks and quick diagnosis.</p>
+          <div class="card reveal media-card">
+            <div>
+              <h3>Mobile on-site repair</h3>
+              <p>Great for flats, adjustments, safety checks, and quick fixes where your bike is.</p>
+            </div>
+            <img alt="Service van for mobile repairs" src="https://source.unsplash.com/featured/600x600?service,van" />
           </div>
-          <div class="card reveal">
-            <h3>Brakes & Shifting</h3>
-            <p>Adjustments, pad installs, cable swaps, drivetrain tuning, test ride check.</p>
+
+          <div class="card reveal media-card">
+            <div>
+              <h3>Pickup & drop-off</h3>
+              <p>We pick up your bike, repair it, and return it—ideal for tune-ups and deeper work.</p>
+            </div>
+            <img alt="Cyclist with a bike outside a home" src="https://source.unsplash.com/featured/600x600?bike,home" />
           </div>
-          <div class="card reveal">
-            <h3>Tune-Ups</h3>
-            <p>From quick safety tune-ups to deeper maintenance based on your bike’s needs.</p>
+
+          <div class="card reveal media-card">
+            <div>
+              <h3>Scheduled drop-offs</h3>
+              <p>Drop-offs are appointment only (home-based workshop). Timing is confirmed in advance.</p>
+            </div>
+            <img alt="Bicycle being serviced in a workshop" src="https://source.unsplash.com/featured/600x600?bicycle,workshop" />
           </div>
         </div>
       </div>
@@ -108,19 +149,19 @@
     <section class="section">
       <div class="container split">
         <div class="card reveal">
-          <h3>How mobile service works</h3>
+          <h3>How appointments work</h3>
           <ol class="list">
-            <li>Call or message with the issue and your location.</li>
-            <li>We confirm a time window and give a rough estimate.</li>
-            <li>We complete the work on-site and do a safety check before you ride.</li>
+            <li>Request a quote with bike type, issue, and your location in Pickering.</li>
+            <li>We confirm the best service option and time window.</li>
+            <li>We complete work after confirming any parts and pricing.</li>
           </ol>
         </div>
         <div class="card reveal">
-          <h3>Why customers choose us</h3>
+          <h3>Professional approach</h3>
           <ul class="list">
-            <li>20+ years professional mechanic experience.</li>
-            <li>Clear pricing and honest recommendations.</li>
-            <li>Convenient mobile service—no shop visit required.</li>
+            <li>Parts are high-quality and approved with you before purchase.</li>
+            <li>If additional issues are discovered, we contact you before proceeding.</li>
+            <li>If you decline additional work, labour is prorated fairly.</li>
           </ul>
         </div>
       </div>
@@ -129,11 +170,11 @@
     <section class="section">
       <div class="container">
         <div class="card reveal">
-          <h3>Need help today?</h3>
-          <p>Call for the fastest response. For quotes, include your bike type, issue, and location in Pickering.</p>
+          <h3>Book before March 1 for 10% off</h3>
+          <p>Quickest next step: request a quote. We’ll confirm your appointment window and best service option.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="tel:+14168887566">Call 416-888-7566</a>
-            <a class="btn" href="contact.html">Request a Quote</a>
+            <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+            <a class="btn btn-ghost" href="services.html">Services & Pricing</a>
           </div>
         </div>
       </div>
@@ -143,13 +184,13 @@
   <footer>
     <div class="container footer-grid">
       <div class="small">
-        <strong>Okafo and Sons Bicycle Service and Repair</strong><br />
-        Pickering, ON<br />
+        <strong>Okafo and Son Professional Bicycle Repair</strong><br />
+        Pickering, ON • Appointment only (7:00am–9:00pm)<br />
         <a href="tel:+14168887566">416-888-7566</a>
       </div>
       <div class="small">
-        Mobile service • By appointment<br />
-        © <span id="year"></span> Okafo and Sons
+        Mobile service • Pickup/drop-off available<br />
+        © <span id="year"></span> Okafo and Son
       </div>
     </div>
   </footer>
@@ -157,15 +198,15 @@
   <script src="script.js"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 
-  <!-- Basic LocalBusiness schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"BicycleStore",
-    "name":"Okafo and Sons Bicycle Service and Repair",
+    "name":"Okafo and Son Professional Bicycle Repair",
     "telephone":"+1-416-888-7566",
     "areaServed":"Pickering, ON",
-    "description":"Mobile bicycle service and repair in Pickering. Flats, brakes, tune-ups, and safety checks. 20+ years professional bicycle mechanic experience."
+    "openingHours":"Mo-Su 07:00-21:00",
+    "description":"Professional mobile bicycle repair in Pickering. Appointment-only service: on-site repairs, pickup & drop-off, and scheduled drop-offs. 20+ years professional bicycle mechanic experience."
   }
   </script>
 </body>

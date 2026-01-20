@@ -1,19 +1,20 @@
 // script.js
-// - Smooth page transitions (fade out/in)
-// - Subtle scroll reveal animations
-// - Pickering weather module (Open-Meteo: no key)
+// - Smooth page transitions
+// - Subtle scroll reveals
+// - Alert bar dismiss (localStorage)
+// - Pickering weather pill + modal (Open-Meteo, no key)
 
 (() => {
-  // Mark page ready for transition-in
+  // Transition-in
   requestAnimationFrame(() => document.body.classList.add("is-ready"));
 
-  // Set aria-current based on path
+  // aria-current
   const path = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll('[data-nav]').forEach(a => {
     if (a.getAttribute("href") === path) a.setAttribute("aria-current", "page");
   });
 
-  // Page transitions: intercept internal links
+  // Internal link transitions
   const isInternal = (a) => {
     const href = a.getAttribute("href") || "";
     if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return false;
@@ -24,7 +25,6 @@
   document.addEventListener("click", (e) => {
     const a = e.target.closest("a");
     if (!a || !isInternal(a)) return;
-
     e.preventDefault();
     const href = a.getAttribute("href");
     document.body.classList.add("is-leaving");
@@ -42,46 +42,81 @@
         }
       });
     }, { threshold: 0.12 });
-
     revealEls.forEach(el => io.observe(el));
   }
 
-  // Weather (Pickering, ON) - approx coords
-  // Pickering, Ontario: ~43.8384, -79.0868
-  const weatherRoot = document.querySelector("[data-weather]");
-  if (weatherRoot) {
+  // Alert bar dismiss
+  const alertBar = document.querySelector("[data-alertbar]");
+  if (alertBar) {
+    const key = "okapho_alert_dismissed_v1";
+    const dismissed = localStorage.getItem(key) === "1";
+    if (dismissed) alertBar.remove();
+
+    const btn = document.querySelector("[data-alert-dismiss]");
+    btn?.addEventListener("click", () => {
+      localStorage.setItem(key, "1");
+      alertBar.remove();
+    });
+  }
+
+  // Weather
+  const weatherBtn = document.querySelector("[data-weather-btn]");
+  const dialog = document.querySelector("[data-weather-dialog]");
+  const closeBtn = document.querySelector("[data-weather-close]");
+
+  const wxIconForCode = (code) => {
+    if (code === 0) return "☀️";
+    if ([1,2].includes(code)) return "🌤️";
+    if (code === 3) return "☁️";
+    if ([45,48].includes(code)) return "🌫️";
+    if ([51,53,55,56,57].includes(code)) return "🌦️";
+    if ([61,63,65,66,67].includes(code)) return "🌧️";
+    if ([71,73,75,77].includes(code)) return "🌨️";
+    if ([80,81,82].includes(code)) return "🌧️";
+    if ([85,86].includes(code)) return "🌨️";
+    if ([95,96,99].includes(code)) return "⛈️";
+    return "🌡️";
+  };
+
+  const setWx = ({ temp, code }) => {
+    const icon = wxIconForCode(code);
+    document.querySelectorAll("[data-wx-icon]").forEach(n => n.textContent = icon);
+    document.querySelectorAll("[data-wx-temp]").forEach(n => n.textContent = `${Math.round(temp)}°C`);
+    document.querySelectorAll("[data-wx-sub]").forEach(n => n.textContent = "Pickering • now");
+  };
+
+  const loadWx = () => {
+    // Pickering coords (approx)
     const lat = 43.8384, lon = -79.0868;
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&temperature_unit=celsius`;
-
-    const iconForCode = (code) => {
-      // Simple icon set (emoji to avoid asset dependencies)
-      // Open-Meteo weather codes: https://open-meteo.com/en/docs
-      if (code === 0) return "☀️";
-      if ([1,2].includes(code)) return "🌤️";
-      if (code === 3) return "☁️";
-      if ([45,48].includes(code)) return "🌫️";
-      if ([51,53,55,56,57].includes(code)) return "🌦️";
-      if ([61,63,65,66,67].includes(code)) return "🌧️";
-      if ([71,73,75,77].includes(code)) return "🌨️";
-      if ([80,81,82].includes(code)) return "🌧️";
-      if ([85,86].includes(code)) return "🌨️";
-      if ([95,96,99].includes(code)) return "⛈️";
-      return "🌡️";
-    };
-
     fetch(url)
       .then(r => r.json())
       .then(data => {
         const temp = data?.current?.temperature_2m;
         const code = data?.current?.weather_code;
         if (typeof temp !== "number") throw new Error("No temp");
-
-        weatherRoot.querySelector("[data-weather-temp]").textContent = `${Math.round(temp)}°C`;
-        weatherRoot.querySelector("[data-weather-icon]").textContent = iconForCode(code);
-        weatherRoot.querySelector("[data-weather-status]").textContent = "Pickering, ON (now)";
+        setWx({ temp, code });
       })
       .catch(() => {
-        weatherRoot.querySelector("[data-weather-status]").textContent = "Pickering, ON";
+        document.querySelectorAll("[data-wx-sub]").forEach(n => n.textContent = "Pickering");
       });
+  };
+
+  if (weatherBtn && dialog) {
+    loadWx();
+
+    weatherBtn.addEventListener("click", () => {
+      if (typeof dialog.showModal === "function") dialog.showModal();
+      else dialog.setAttribute("open", "open");
+    });
+
+    closeBtn?.addEventListener("click", () => dialog.close());
+
+    dialog.addEventListener("click", (e) => {
+      const rect = dialog.querySelector(".modal")?.getBoundingClientRect();
+      if (!rect) return;
+      const inBox = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+      if (!inBox) dialog.close();
+    });
   }
 })();

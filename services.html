@@ -3,44 +3,97 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mobile Services & Pricing | Okafo and Sons Bicycle Service and Repair</title>
-  <meta name="description" content="Mobile bike repair services and typical pricing in Pickering, ON. Transparent labour ranges, tune-ups, flats, brakes, and more." />
+  <title>Services & Pricing | Okafo and Son Professional Bicycle Repair</title>
+  <meta name="description" content="Premium mobile bike repair in Pickering. Transparent service options, typical pricing ranges, and FAQs. Appointment only. Call 416-888-7566." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;550;650;750;850&family=Space+Grotesk:wght@500;650;750&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
   <header>
+    <div class="alertbar" data-alertbar>
+      <div class="container alertbar-inner">
+        <p><strong>Get your bike ready for spring.</strong> Save <strong>10%</strong> on all bookings before <strong>March 1</strong>.</p>
+        <button class="iconbtn" type="button" aria-label="Dismiss promo" data-alert-dismiss>✕</button>
+      </div>
+    </div>
+
     <div class="container nav">
-      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span><span>Okafo and Sons</span></a>
-      <nav class="navlinks" aria-label="Primary">
-        <a data-nav href="index.html">Home</a>
-        <a data-nav href="services.html">Mobile Services & Pricing</a>
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="mark" aria-hidden="true"></span>
+        <span class="brand-name">Okafo and Son</span>
+      </a>
+
+      <nav class="nav-mid" aria-label="Primary">
+        <a data-nav href="services.html">Services & Pricing</a>
         <a data-nav href="contact.html">Contact</a>
-        <a class="btn btn-primary" href="tel:+14168887566">Call: 416-888-7566</a>
       </nav>
+
+      <div class="nav-right">
+        <a class="phone-link" href="tel:+14168887566">416-888-7566</a>
+        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+        <button class="weather-pill" type="button" data-weather-btn aria-haspopup="dialog" aria-label="Riding weather in Pickering">
+          <span class="wx-ic" aria-hidden="true"><span data-wx-icon>🌡️</span></span>
+          <span class="wx-meta">
+            <span class="wx-top"><span data-wx-temp>—</span></span>
+            <span class="wx-sub" data-wx-sub>Riding weather</span>
+          </span>
+        </button>
+      </div>
     </div>
   </header>
+
+  <dialog data-weather-dialog aria-label="Riding weather details">
+    <div class="modal" role="document">
+      <div class="modal-head">
+        <h3>Riding weather</h3>
+        <button class="iconbtn" type="button" aria-label="Close weather" data-weather-close>✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="card">
+            <h3 style="margin:0 0 6px;">Pickering, ON</h3>
+            <p class="small" style="margin:0;">Current conditions (approx.)</p>
+          </div>
+          <div class="card">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div style="font-size:30px;" aria-hidden="true"><span data-wx-icon>🌡️</span></div>
+              <div>
+                <div style="font-weight:900; font-size:1.3rem;"><span data-wx-temp>—</span></div>
+                <div class="small" data-wx-sub>Pickering • now</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="small" style="margin-top:14px;">Mobile service is appointment-only. For the fastest booking, request a quote.</p>
+      </div>
+    </div>
+  </dialog>
 
   <main id="main">
     <section class="hero">
       <div class="container">
-        <div class="kicker reveal"><span class="dot" aria-hidden="true"></span> Mobile service • Pickering, ON</div>
+        <div class="kicker reveal"><span class="dot" aria-hidden="true"></span> Premium mobile service • appointment only</div>
         <h1 class="reveal">Services & typical pricing</h1>
         <p class="lede reveal">
           Pricing ranges are typical labour estimates (CAD). Parts are extra. We confirm scope + estimate before paid work.
         </p>
         <div class="cta-row reveal">
           <a class="btn btn-primary" href="contact.html">Request a Quote</a>
-          <a class="btn" href="tel:+14168887566">Call 416-888-7566</a>
+          <a class="btn btn-ghost" href="tel:+14168887566">Call 416-888-7566</a>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="reveal">Common mobile repairs</h2>
-        <p class="sub reveal">Fast fixes and safety checks—completed on-site.</p>
+        <h2 class="reveal">Common repairs</h2>
+        <p class="sub reveal">Includes on-site options where appropriate. Premium service and scheduling included.</p>
 
         <table class="table reveal" aria-label="Service pricing table">
           <thead>
@@ -50,60 +103,116 @@
             <tr>
               <td><strong>Flat repair</strong></td>
               <td>Tube swap or patch (if possible), tyre inspection, pressure check</td>
-              <td>$20–$40 + tube/parts</td>
+              <td>$35–$65 + tube/parts</td>
             </tr>
             <tr>
               <td><strong>Brake adjustment</strong></td>
               <td>Align, tension, pad check, quick safety test</td>
-              <td>$25–$45</td>
+              <td>$40–$75</td>
             </tr>
             <tr>
               <td><strong>Brake pads (install)</strong></td>
               <td>Install pads + adjust (pads extra)</td>
-              <td>$30–$55 + pads</td>
+              <td>$55–$95 + pads</td>
             </tr>
             <tr>
               <td><strong>Shifting adjustment</strong></td>
               <td>Indexing, limits, cable tension, test shift</td>
-              <td>$30–$55</td>
+              <td>$55–$95</td>
             </tr>
             <tr>
               <td><strong>Basic tune-up</strong></td>
               <td>Brakes + shifting check, bolts, tyre pressure, safety inspection</td>
-              <td>$75–$120</td>
+              <td>$140–$220</td>
             </tr>
             <tr>
               <td><strong>Full tune-up</strong></td>
               <td>Deeper adjustments, drivetrain clean (light), safety inspection, test ride</td>
-              <td>$140–$220</td>
+              <td>$260–$390</td>
+            </tr>
+            <tr>
+              <td><strong>Pickup & drop-off (within Pickering)</strong></td>
+              <td>Scheduled pickup and return (contactless available)</td>
+              <td>$35–$75</td>
+            </tr>
+            <tr>
+              <td><strong>Mobile call-out (within Pickering)</strong></td>
+              <td>On-site appointment window + setup</td>
+              <td>$35–$85</td>
             </tr>
           </tbody>
         </table>
 
         <p class="small reveal" style="margin-top:14px;">
-          Mobile call-out fees can vary by distance and timing. We’ll confirm when you book.
+          Exact fees depend on timing, distance, and service scope. We confirm total pricing before proceeding.
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container split">
-        <div class="card reveal">
-          <h3>What to expect on-site</h3>
-          <ul class="list">
-            <li>We arrive with tools and common parts.</li>
-            <li>We diagnose and confirm pricing before work.</li>
-            <li>We finish with a safety check and quick test (where possible).</li>
-          </ul>
+        <div class="card reveal media-card">
+          <div>
+            <h3>Brakes & safety</h3>
+            <p>We prioritize safe stopping power, clean cable routing, and reliable setup.</p>
+          </div>
+          <img alt="Bicycle brake caliper closeup" src="https://source.unsplash.com/featured/600x600?bicycle,brakes" />
         </div>
-        <div class="card reveal">
-          <h3>Best info for fast booking</h3>
-          <ul class="list">
-            <li>Bike type (road, commuter, MTB, kids, e-bike)</li>
-            <li>Issue details + how long it’s been happening</li>
-            <li>Your location in Pickering (or nearby)</li>
-            <li>Your preferred time window</li>
-          </ul>
+        <div class="card reveal media-card">
+          <div>
+            <h3>Tyres & flats</h3>
+            <p>Fast diagnosis and a professional fix—patch or replace depending on what’s best.</p>
+          </div>
+          <img alt="Bicycle tyre and wheel closeup" src="https://source.unsplash.com/featured/600x600?bicycle,tire" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="reveal">FAQ</h2>
+        <p class="sub reveal">Professional policies for mobile service, pickups/drop-offs, parts approval, and billing.</p>
+
+        <div class="stack reveal">
+          <details>
+            <summary>Are you appointment-only?</summary>
+            <p>Yes. All services are by appointment only. We operate 7:00am–9:00pm and confirm an appointment window that fits your schedule.</p>
+          </details>
+
+          <details>
+            <summary>Do you repair on-site, or do you take the bike?</summary>
+            <p>Both. Many issues can be handled on-site (flats, adjustments, safety checks). For deeper work, we can arrange pickup/drop-off or a scheduled drop-off appointment.</p>
+          </details>
+
+          <details>
+            <summary>How do pickup and drop-off work?</summary>
+            <p>We schedule a pickup window, transport the bike for service, then return it in a scheduled drop-off window. Contactless options are available.</p>
+          </details>
+
+          <details>
+            <summary>What is contactless pickup/drop-off?</summary>
+            <p>We can provide a lock with a code. You secure the bike on your porch or designated spot, we arrive, unlock and pick it up, then return it and re-secure it. Afterwards, we pick up our lock in a follow-up window.</p>
+          </details>
+
+          <details>
+            <summary>Do you use high-quality parts?</summary>
+            <p>Yes. We use high-quality parts and materials. If parts are needed, we contact you to confirm options and pricing before purchasing anything.</p>
+          </details>
+
+          <details>
+            <summary>What if you discover additional issues mid-repair?</summary>
+            <p>We pause and contact you to approve any additional work and parts. If you decide not to proceed, you’ll receive a fair prorated labour charge for the time already spent and we’ll return the bike as-is (or reassemble safely if needed).</p>
+          </details>
+
+          <details>
+            <summary>Do you provide estimates?</summary>
+            <p>Yes. We provide a rough estimate based on your description and refine it after inspection. Final totals are confirmed before any paid work begins.</p>
+          </details>
+        </div>
+
+        <div class="cta-row reveal" style="margin-top:18px;">
+          <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+          <a class="btn btn-ghost" href="tel:+14168887566">Call 416-888-7566</a>
         </div>
       </div>
     </section>
@@ -112,13 +221,13 @@
   <footer>
     <div class="container footer-grid">
       <div class="small">
-        <strong>Okafo and Sons Bicycle Service and Repair</strong><br />
-        Pickering, ON<br />
+        <strong>Okafo and Son Professional Bicycle Repair</strong><br />
+        Pickering, ON • Appointment only (7:00am–9:00pm)<br />
         <a href="tel:+14168887566">416-888-7566</a>
       </div>
       <div class="small">
-        Mobile service • By appointment<br />
-        © <span id="year"></span> Okafo and Sons
+        Mobile service • Pickup/drop-off available<br />
+        © <span id="year"></span> Okafo and Son
       </div>
     </div>
   </footer>
