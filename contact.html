@@ -2,193 +2,223 @@
 <html lang="en-CA">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact | Okafo and Son Professional Bicycle Repair</title>
-  <meta name="description" content="Request a quote for mobile bicycle repair in Pickering. Appointment-only service 7am–9pm. Call 416-888-7566." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;550;650;750;850&family=Space+Grotesk:wght@500;650;750&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Contact • Okafo and Son</title>
+  <meta name="description" content="Request a quote for mobile bicycle repair in Pickering. Call 416-888-7566 or send a message. Appointment-only." />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
 
-  <header>
-    <div class="alertbar" data-alertbar>
-      <div class="container alertbar-inner">
-        <p><strong>Get your bike ready for spring.</strong> Save <strong>10%</strong> on all bookings before <strong>March 1</strong>.</p>
-        <button class="iconbtn" type="button" aria-label="Dismiss promo" data-alert-dismiss>✕</button>
+<body>
+  <div class="banner" role="region" aria-label="Promotion" data-banner>
+    <div class="container banner-inner">
+      <div class="banner-text">
+        <strong>Get your bike ready for spring.</strong> Save <strong>10%</strong> on all bookings before <strong>March 1</strong>.
+      </div>
+      <button class="banner-close" type="button" aria-label="Dismiss promotion" data-banner-close>✕</button>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Okafo and Son Home">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Okafo and Son</span>
+      </a>
+
+      <nav class="navlinks nav-desktop" aria-label="Primary">
+        <a data-nav href="services.html">Services & Pricing</a>
+        <a data-nav href="contact.html" aria-current="page">Contact</a>
+        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+
+        <button class="weather-pill" type="button" data-weather-open aria-label="Open riding weather">
+          <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+          <span class="weather-pill-temp" data-weather-temp>—</span>
+          <span class="weather-pill-label">Pickering</span>
+        </button>
+      </nav>
+
+      <div class="nav-mobile">
+        <button class="weather-pill is-compact" type="button" data-weather-open aria-label="Open riding weather">
+          <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+          <span class="weather-pill-temp" data-weather-temp>—</span>
+        </button>
+
+        <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu-overlay" data-menu-open>
+          <span class="hamburger-lines" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
 
-    <div class="container nav">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="mark" aria-hidden="true"></span>
-        <span class="brand-name">Okafo and Son</span>
-      </a>
+    <div class="menu-overlay" id="menu-overlay" hidden>
+      <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="menu-top">
+          <div class="menu-brand">
+            <span class="mark" aria-hidden="true"></span>
+            <span>Okafo and Son</span>
+          </div>
+          <button class="menu-close" type="button" aria-label="Close menu" data-menu-close>✕</button>
+        </div>
 
-      <nav class="nav-mid" aria-label="Primary">
-        <a data-nav href="services.html">Services & Pricing</a>
-        <a data-nav href="contact.html">Contact</a>
-      </nav>
+        <div class="menu-links">
+          <a href="services.html">Services & Pricing</a>
+          <a href="contact.html">Contact</a>
+          <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+          <a class="btn" href="tel:+14168887566">Call: 416-888-7566</a>
+        </div>
 
-      <div class="nav-right">
-        <a class="phone-link" href="tel:+14168887566">416-888-7566</a>
-        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
-        <button class="weather-pill" type="button" data-weather-btn aria-haspopup="dialog" aria-label="Riding weather in Pickering">
-          <span class="wx-ic" aria-hidden="true"><span data-wx-icon>🌡️</span></span>
-          <span class="wx-meta">
-            <span class="wx-top"><span data-wx-temp>—</span></span>
-            <span class="wx-sub" data-wx-sub>Riding weather</span>
-          </span>
-        </button>
+        <div class="menu-meta">
+          <div class="menu-note">
+            <strong>Appointment-only</strong><br />
+            Mobile on-site • Pickup/Drop-off • Scheduled drop-offs
+          </div>
+
+          <button class="menu-weather" type="button" data-weather-open>
+            <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+            <span>
+              <strong><span data-weather-temp>—</span></strong> &nbsp; Riding weather<br />
+              <span class="small">Pickering • now</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="weather-modal" hidden>
+      <div class="modal-backdrop" data-weather-close></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="Riding weather">
+        <div class="modal-head">
+          <div>
+            <strong>Riding weather</strong><br />
+            <span class="small">Pickering • now</span>
+          </div>
+          <button class="modal-close" type="button" aria-label="Close weather" data-weather-close>✕</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="weather-row">
+            <div class="weather-big-icon" aria-hidden="true"><span data-weather-icon>⛅</span></div>
+            <div>
+              <div class="weather-big-temp"><span data-weather-temp>—</span></div>
+              <div class="small" data-weather-status>Loading…</div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:14px;">
+            <h3 style="margin:0 0 8px;">Service hours</h3>
+            <p style="margin:0;" class="small">
+              7:00am–9:00pm • Appointment-only<br />
+              Mobile service, pickup/drop-off, or scheduled drop-offs.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <dialog data-weather-dialog aria-label="Riding weather details">
-    <div class="modal" role="document">
-      <div class="modal-head">
-        <h3>Riding weather</h3>
-        <button class="iconbtn" type="button" aria-label="Close weather" data-weather-close>✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-grid">
-          <div class="card">
-            <h3 style="margin:0 0 6px;">Pickering, ON</h3>
-            <p class="small" style="margin:0;">Current conditions (approx.)</p>
-          </div>
-          <div class="card">
-            <div style="display:flex; gap:12px; align-items:center;">
-              <div style="font-size:30px;" aria-hidden="true"><span data-wx-icon>🌡️</span></div>
-              <div>
-                <div style="font-weight:900; font-size:1.3rem;"><span data-wx-temp>—</span></div>
-                <div class="small" data-wx-sub>Pickering • now</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p class="small" style="margin-top:14px;">Mobile service is appointment-only. For the fastest booking, request a quote.</p>
-      </div>
-    </div>
-  </dialog>
-
-  <main id="main">
-    <section class="hero">
-      <div class="container">
-        <div class="kicker reveal"><span class="dot" aria-hidden="true"></span> Appointment only • 7:00am–9:00pm</div>
-        <h1 class="reveal">Request a quote</h1>
-        <p class="lede reveal">Tell us your bike type, issue, and location in Pickering. We’ll reply with next steps and a scheduled window.</p>
-      </div>
-    </section>
-
+  <main>
     <section class="section">
-      <div class="container split">
-        <div class="card reveal">
-          <h3>Quote form</h3>
+      <div class="container">
+        <div class="kicker reveal">
+          <span class="dot" aria-hidden="true"></span>
+          Pickering • Appointment-only • Mobile + Pickup/Drop-off
+        </div>
 
-          <!-- Replace action with your form handler (Netlify, Formspree, Webflow, etc.) -->
-          <form action="#" method="post">
-            <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" autocomplete="name" required />
+        <h1 class="page-title reveal">Request a quote</h1>
+        <p class="lede reveal">
+          Tell us what’s happening and how you’d like to service your bike (mobile, pickup &amp; drop-off, or drop-off by appointment).
+          We’ll reply with availability, recommended service, and next steps.
+        </p>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <h2 style="margin-top:0;">Contact</h2>
+            <p class="muted">Fastest response is by phone or this form.</p>
+
+            <div class="contact-lines">
+              <a class="btn btn-primary" href="tel:+14168887566">Call 416-888-7566</a>
+              <div class="small muted">7:00am–9:00pm • Appointment-only</div>
             </div>
 
-            <div>
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" autocomplete="tel" required />
-            </div>
+            <figure class="media" style="margin-top:16px;">
+              <img src="images/pickering-neighborhood-street.jpg" alt="A calm neighbourhood street scene in Pickering." loading="lazy" />
+            </figure>
+          </div>
 
-            <div class="split" style="grid-template-columns: 1fr 1fr;">
-              <div>
-                <label for="bike">Bike type</label>
-                <select id="bike" name="bike" required>
-                  <option value="">Select one</option>
-                  <option>Road</option>
-                  <option>Hybrid / Commuter</option>
-                  <option>Mountain</option>
-                  <option>Kids</option>
-                  <option>E-bike</option>
-                  <option>Other</option>
-                </select>
+          <div class="card reveal">
+            <h2 style="margin-top:0;">Quote form</h2>
+
+            <!-- Replace action with your provider (Formspree/Netlify/Webflow). -->
+            <form class="form" action="#" method="POST">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" required />
               </div>
-              <div>
-                <label for="service">Service option</label>
+
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" inputmode="tel" autocomplete="tel" required />
+              </div>
+
+              <div class="field">
+                <label for="location">Pickup area / nearest intersection</label>
+                <input id="location" name="location" autocomplete="street-address" required />
+              </div>
+
+              <div class="field">
+                <label for="service">Service preference</label>
                 <select id="service" name="service" required>
-                  <option value="">Select one</option>
+                  <option value="">Select one…</option>
                   <option>Mobile on-site repair</option>
                   <option>Pickup & drop-off</option>
-                  <option>Scheduled drop-off (appointment only)</option>
+                  <option>Drop-off by appointment</option>
                 </select>
               </div>
-            </div>
 
-            <div>
-              <label for="location">Location (Pickering)</label>
-              <input id="location" name="location" placeholder="Neighbourhood / major intersection" required />
-            </div>
+              <div class="field">
+                <label for="details">What’s the issue?</label>
+                <textarea id="details" name="details" rows="5" required placeholder="Example: rear brake rubbing, shifting skips in 4th/5th, flat tyre, etc."></textarea>
+              </div>
 
-            <div>
-              <label for="message">What’s going on?</label>
-              <textarea id="message" name="message" placeholder="Example: rear tyre flat, brakes rubbing, shifting skipping…" required></textarea>
-            </div>
+              <div class="field">
+                <label for="timing">Timing</label>
+                <input id="timing" name="timing" placeholder="Example: this week evenings, weekend morning, ASAP" />
+              </div>
 
-            <button class="btn btn-primary" type="submit">Send request</button>
-            <p class="small">Note: connect a form handler to receive submissions.</p>
-          </form>
+              <button class="btn btn-primary" type="submit">Send request</button>
+
+              <p class="small muted" style="margin-top:10px;">
+                Parts are always approved with you before purchase or installation.
+              </p>
+            </form>
+          </div>
         </div>
 
-        <div class="stack">
-          <div class="card reveal">
-            <h3>Contact</h3>
-            <p><strong>Phone:</strong> <a href="tel:+14168887566">416-888-7566</a></p>
-            <p><strong>Based in:</strong> Pickering, ON</p>
-            <p class="small" style="margin-top:10px;">We operate from a home-based workshop. Address is provided after booking a scheduled drop-off.</p>
-          </div>
-
-          <div class="card reveal">
-            <h3>Contactless pickup/drop-off</h3>
-            <p class="small" style="margin-top:0;">
-              We can provide a coded lock for porch pickup. You secure the bike, we unlock and collect it, then return and re-secure it after service. We pick up our lock afterwards.
-            </p>
-          </div>
-
-          <div class="card reveal" id="map">
-            <h3>Pickering area</h3>
-            <p class="small" style="margin-top:0;">Service coverage is centered in Pickering. Nearby areas by request.</p>
-            <div style="border-radius:12px; overflow:hidden; border:1px solid var(--line);">
-              <iframe
-                title="Map of Pickering, Ontario"
-                width="100%"
-                height="260"
-                style="border:0;"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Pickering,+ON&output=embed"></iframe>
-            </div>
-          </div>
+        <div class="card reveal" style="margin-top:16px;">
+          <h2 style="margin:0 0 8px;">Contactless pickup (optional)</h2>
+          <p class="muted" style="margin:0;">
+            For porch pickup, we can provide a lock with a code. You secure the bike to a safe pickup point,
+            we retrieve it, complete the service, return the bike, and then collect our lock.
+          </p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
-      <div class="small">
-        <strong>Okafo and Son Professional Bicycle Repair</strong><br />
-        Pickering, ON • Appointment only (7:00am–9:00pm)<br />
-        <a href="tel:+14168887566">416-888-7566</a>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Okafo and Son</strong><br />
+        <span class="small">Professional Bicycle Repair • Pickering</span>
       </div>
-      <div class="small">
-        Mobile service • Pickup/drop-off available<br />
-        © <span id="year"></span> Okafo and Son
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="tel:+14168887566">416-888-7566</a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="script.js" defer></script>
 </body>
 </html>

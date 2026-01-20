@@ -1,122 +1,197 @@
-// script.js
-// - Smooth page transitions
-// - Subtle scroll reveals
-// - Alert bar dismiss (localStorage)
-// - Pickering weather pill + modal (Open-Meteo, no key)
+/* ==========
+   Utilities
+========== */
+const qs = (sel, root = document) => root.querySelector(sel);
+const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
+/* ==========
+   Banner dismiss
+========== */
 (() => {
-  // Transition-in
-  requestAnimationFrame(() => document.body.classList.add("is-ready"));
+  const banner = qs("[data-banner]");
+  const close = qs("[data-banner-close]");
+  if (!banner || !close) return;
 
-  // aria-current
-  const path = location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll('[data-nav]').forEach(a => {
-    if (a.getAttribute("href") === path) a.setAttribute("aria-current", "page");
+  // optional: remember dismissal for session
+  const key = "okapho_banner_dismissed";
+  if (sessionStorage.getItem(key) === "1") {
+    banner.style.display = "none";
+    return;
+  }
+
+  close.addEventListener("click", () => {
+    banner.style.display = "none";
+    sessionStorage.setItem(key, "1");
+  });
+})();
+
+/* ==========
+   Scroll reveal
+========== */
+(() => {
+  const els = qsa(".reveal");
+  if (!els.length) return;
+
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) {
+    els.forEach(el => el.classList.add("is-in"));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("is-in");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  els.forEach(el => io.observe(el));
+})();
+
+/* ==========
+   Weather (Pickering) via Open-Meteo
+   - Latitude/Longitude approx for Pickering, ON
+========== */
+async function loadWeather() {
+  const tempEls = qsa("[data-weather-temp]");
+  const iconEls = qsa("[data-weather-icon]");
+  const statusEl = qs("[data-weather-status]");
+
+  const setStatus = (t) => { if (statusEl) statusEl.textContent = t; };
+  const setAllTemp = (t) => tempEls.forEach(el => el.textContent = t);
+  const setAllIcon = (emoji) => iconEls.forEach(el => el.textContent = emoji);
+
+  try {
+    setStatus("Loading…");
+
+    const lat = 43.8384;
+    const lon = -79.0868;
+
+    const url = new URL("https://api.open-meteo.com/v1/forecast");
+    url.searchParams.set("latitude", String(lat));
+    url.searchParams.set("longitude", String(lon));
+    url.searchParams.set("current", "temperature_2m,weather_code");
+    url.searchParams.set("temperature_unit", "celsius");
+    url.searchParams.set("timezone", "America/Toronto");
+
+    const res = await fetch(url.toString());
+    if (!res.ok) throw new Error("Weather request failed");
+    const data = await res.json();
+
+    const temp = data?.current?.temperature_2m;
+    const code = data?.current?.weather_code;
+
+    const tempText = (typeof temp === "number") ? `${Math.round(temp)}°C` : "—";
+    setAllTemp(tempText);
+
+    // Basic WMO -> emoji
+    const icon = (() => {
+      if (code === 0) return "☀️";              // clear
+      if (code === 1 || code === 2) return "🌤️"; // mainly clear/partly
+      if (code === 3) return "☁️";              // overcast
+      if (code >= 45 && code <= 48) return "🌫️";
+      if (code >= 51 && code <= 57) return "🌦️";
+      if (code >= 61 && code <= 67) return "🌧️";
+      if (code >= 71 && code <= 77) return "🌨️";
+      if (code >= 80 && code <= 82) return "🌧️";
+      if (code >= 85 && code <= 86) return "🌨️";
+      if (code >= 95) return "⛈️";
+      return "⛅";
+    })();
+
+    setAllIcon(icon);
+
+    // simple status
+    const status = (() => {
+      if (code === 0) return "Clear";
+      if (code === 1 || code === 2) return "Mostly clear";
+      if (code === 3) return "Overcast";
+      if (code >= 45 && code <= 48) return "Fog";
+      if (code >= 51 && code <= 57) return "Drizzle";
+      if (code >= 61 && code <= 67) return "Rain";
+      if (code >= 71 && code <= 77) return "Snow";
+      if (code >= 80 && code <= 82) return "Showers";
+      if (code >= 95) return "Thunderstorm";
+      return "Current conditions";
+    })();
+
+    setStatus(status);
+  } catch (err) {
+    // degrade gracefully
+    qsa("[data-weather-temp]").forEach(el => el.textContent = "—");
+    qsa("[data-weather-icon]").forEach(el => el.textContent = "⛅");
+    const statusEl = qs("[data-weather-status]");
+    if (statusEl) statusEl.textContent = "Weather unavailable";
+  }
+}
+
+loadWeather();
+
+/* ==========
+   Full-screen menu + weather modal
+========== */
+(() => {
+  const overlay = document.getElementById("menu-overlay");
+  const modal = document.getElementById("weather-modal");
+
+  const openMenuBtn = qs("[data-menu-open]");
+  const closeMenuBtn = qs("[data-menu-close]");
+
+  const weatherOpenBtns = qsa("[data-weather-open]");
+  const weatherCloseBtns = qsa("[data-weather-close]");
+
+  const openMenu = () => {
+    if (!overlay) return;
+    overlay.hidden = false;
+    requestAnimationFrame(() => overlay.classList.add("is-open"));
+    openMenuBtn?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeMenu = () => {
+    if (!overlay) return;
+    overlay.classList.remove("is-open");
+    openMenuBtn?.setAttribute("aria-expanded", "false");
+    setTimeout(() => {
+      overlay.hidden = true;
+      document.body.style.overflow = "";
+    }, 200);
+  };
+
+  const openWeather = () => {
+    if (!modal) return;
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add("is-open"));
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeWeather = () => {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    setTimeout(() => {
+      modal.hidden = true;
+      document.body.style.overflow = "";
+    }, 200);
+  };
+
+  openMenuBtn?.addEventListener("click", openMenu);
+  closeMenuBtn?.addEventListener("click", closeMenu);
+
+  overlay?.addEventListener("click", (e) => {
+    if (e.target === overlay) closeMenu();
   });
 
-  // Internal link transitions
-  const isInternal = (a) => {
-    const href = a.getAttribute("href") || "";
-    if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return false;
-    if (a.target === "_blank") return false;
-    return !href.startsWith("http");
-  };
-
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest("a");
-    if (!a || !isInternal(a)) return;
-    e.preventDefault();
-    const href = a.getAttribute("href");
-    document.body.classList.add("is-leaving");
-    setTimeout(() => { window.location.href = href; }, 220);
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (modal && !modal.hidden) closeWeather();
+    else if (overlay && !overlay.hidden) closeMenu();
   });
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll(".reveal");
-  if (revealEls.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          en.target.classList.add("is-in");
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-  }
-
-  // Alert bar dismiss
-  const alertBar = document.querySelector("[data-alertbar]");
-  if (alertBar) {
-    const key = "okapho_alert_dismissed_v1";
-    const dismissed = localStorage.getItem(key) === "1";
-    if (dismissed) alertBar.remove();
-
-    const btn = document.querySelector("[data-alert-dismiss]");
-    btn?.addEventListener("click", () => {
-      localStorage.setItem(key, "1");
-      alertBar.remove();
-    });
-  }
-
-  // Weather
-  const weatherBtn = document.querySelector("[data-weather-btn]");
-  const dialog = document.querySelector("[data-weather-dialog]");
-  const closeBtn = document.querySelector("[data-weather-close]");
-
-  const wxIconForCode = (code) => {
-    if (code === 0) return "☀️";
-    if ([1,2].includes(code)) return "🌤️";
-    if (code === 3) return "☁️";
-    if ([45,48].includes(code)) return "🌫️";
-    if ([51,53,55,56,57].includes(code)) return "🌦️";
-    if ([61,63,65,66,67].includes(code)) return "🌧️";
-    if ([71,73,75,77].includes(code)) return "🌨️";
-    if ([80,81,82].includes(code)) return "🌧️";
-    if ([85,86].includes(code)) return "🌨️";
-    if ([95,96,99].includes(code)) return "⛈️";
-    return "🌡️";
-  };
-
-  const setWx = ({ temp, code }) => {
-    const icon = wxIconForCode(code);
-    document.querySelectorAll("[data-wx-icon]").forEach(n => n.textContent = icon);
-    document.querySelectorAll("[data-wx-temp]").forEach(n => n.textContent = `${Math.round(temp)}°C`);
-    document.querySelectorAll("[data-wx-sub]").forEach(n => n.textContent = "Pickering • now");
-  };
-
-  const loadWx = () => {
-    // Pickering coords (approx)
-    const lat = 43.8384, lon = -79.0868;
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&temperature_unit=celsius`;
-    fetch(url)
-      .then(r => r.json())
-      .then(data => {
-        const temp = data?.current?.temperature_2m;
-        const code = data?.current?.weather_code;
-        if (typeof temp !== "number") throw new Error("No temp");
-        setWx({ temp, code });
-      })
-      .catch(() => {
-        document.querySelectorAll("[data-wx-sub]").forEach(n => n.textContent = "Pickering");
-      });
-  };
-
-  if (weatherBtn && dialog) {
-    loadWx();
-
-    weatherBtn.addEventListener("click", () => {
-      if (typeof dialog.showModal === "function") dialog.showModal();
-      else dialog.setAttribute("open", "open");
-    });
-
-    closeBtn?.addEventListener("click", () => dialog.close());
-
-    dialog.addEventListener("click", (e) => {
-      const rect = dialog.querySelector(".modal")?.getBoundingClientRect();
-      if (!rect) return;
-      const inBox = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
-      if (!inBox) dialog.close();
-    });
-  }
+  weatherOpenBtns.forEach(btn => btn.addEventListener("click", () => {
+    if (overlay && !overlay.hidden) closeMenu();
+    setTimeout(openWeather, 80);
+  }));
+  weatherCloseBtns.forEach(btn => btn.addEventListener("click", closeWeather));
 })();

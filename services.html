@@ -2,237 +2,283 @@
 <html lang="en-CA">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Services & Pricing | Okafo and Son Professional Bicycle Repair</title>
-  <meta name="description" content="Premium mobile bike repair in Pickering. Transparent service options, typical pricing ranges, and FAQs. Appointment only. Call 416-888-7566." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;550;650;750;850&family=Space+Grotesk:wght@500;650;750&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Services & Pricing • Okafo and Son</title>
+  <meta name="description" content="Bike tune-ups, brake service, drivetrain repairs, flat fixes, and diagnostics in Pickering. Mobile on-site repair and pickup/drop-off by appointment." />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
 
-  <header>
-    <div class="alertbar" data-alertbar>
-      <div class="container alertbar-inner">
-        <p><strong>Get your bike ready for spring.</strong> Save <strong>10%</strong> on all bookings before <strong>March 1</strong>.</p>
-        <button class="iconbtn" type="button" aria-label="Dismiss promo" data-alert-dismiss>✕</button>
+<body>
+  <div class="banner" role="region" aria-label="Promotion" data-banner>
+    <div class="container banner-inner">
+      <div class="banner-text">
+        <strong>Get your bike ready for spring.</strong> Save <strong>10%</strong> on all bookings before <strong>March 1</strong>.
+      </div>
+      <button class="banner-close" type="button" aria-label="Dismiss promotion" data-banner-close>✕</button>
+    </div>
+  </div>
+
+  <!-- Same header as index -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Okafo and Son Home">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Okafo and Son</span>
+      </a>
+
+      <nav class="navlinks nav-desktop" aria-label="Primary">
+        <a data-nav href="services.html" aria-current="page">Services & Pricing</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+
+        <button class="weather-pill" type="button" data-weather-open aria-label="Open riding weather">
+          <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+          <span class="weather-pill-temp" data-weather-temp>—</span>
+          <span class="weather-pill-label">Pickering</span>
+        </button>
+      </nav>
+
+      <div class="nav-mobile">
+        <button class="weather-pill is-compact" type="button" data-weather-open aria-label="Open riding weather">
+          <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+          <span class="weather-pill-temp" data-weather-temp>—</span>
+        </button>
+
+        <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu-overlay" data-menu-open>
+          <span class="hamburger-lines" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
 
-    <div class="container nav">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="mark" aria-hidden="true"></span>
-        <span class="brand-name">Okafo and Son</span>
-      </a>
+    <div class="menu-overlay" id="menu-overlay" hidden>
+      <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="menu-top">
+          <div class="menu-brand">
+            <span class="mark" aria-hidden="true"></span>
+            <span>Okafo and Son</span>
+          </div>
+          <button class="menu-close" type="button" aria-label="Close menu" data-menu-close>✕</button>
+        </div>
 
-      <nav class="nav-mid" aria-label="Primary">
-        <a data-nav href="services.html">Services & Pricing</a>
-        <a data-nav href="contact.html">Contact</a>
-      </nav>
+        <div class="menu-links">
+          <a href="services.html">Services & Pricing</a>
+          <a href="contact.html">Contact</a>
+          <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+          <a class="btn" href="tel:+14168887566">Call: 416-888-7566</a>
+        </div>
 
-      <div class="nav-right">
-        <a class="phone-link" href="tel:+14168887566">416-888-7566</a>
-        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
-        <button class="weather-pill" type="button" data-weather-btn aria-haspopup="dialog" aria-label="Riding weather in Pickering">
-          <span class="wx-ic" aria-hidden="true"><span data-wx-icon>🌡️</span></span>
-          <span class="wx-meta">
-            <span class="wx-top"><span data-wx-temp>—</span></span>
-            <span class="wx-sub" data-wx-sub>Riding weather</span>
-          </span>
-        </button>
+        <div class="menu-meta">
+          <div class="menu-note">
+            <strong>Appointment-only</strong><br />
+            Mobile on-site • Pickup/Drop-off • Scheduled drop-offs
+          </div>
+
+          <button class="menu-weather" type="button" data-weather-open>
+            <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+            <span>
+              <strong><span data-weather-temp>—</span></strong> &nbsp; Riding weather<br />
+              <span class="small">Pickering • now</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="weather-modal" hidden>
+      <div class="modal-backdrop" data-weather-close></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="Riding weather">
+        <div class="modal-head">
+          <div>
+            <strong>Riding weather</strong><br />
+            <span class="small">Pickering • now</span>
+          </div>
+          <button class="modal-close" type="button" aria-label="Close weather" data-weather-close>✕</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="weather-row">
+            <div class="weather-big-icon" aria-hidden="true"><span data-weather-icon>⛅</span></div>
+            <div>
+              <div class="weather-big-temp"><span data-weather-temp>—</span></div>
+              <div class="small" data-weather-status>Loading…</div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:14px;">
+            <h3 style="margin:0 0 8px;">Service hours</h3>
+            <p style="margin:0;" class="small">
+              7:00am–9:00pm • Appointment-only<br />
+              Mobile service, pickup/drop-off, or scheduled drop-offs.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <dialog data-weather-dialog aria-label="Riding weather details">
-    <div class="modal" role="document">
-      <div class="modal-head">
-        <h3>Riding weather</h3>
-        <button class="iconbtn" type="button" aria-label="Close weather" data-weather-close>✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-grid">
-          <div class="card">
-            <h3 style="margin:0 0 6px;">Pickering, ON</h3>
-            <p class="small" style="margin:0;">Current conditions (approx.)</p>
-          </div>
-          <div class="card">
-            <div style="display:flex; gap:12px; align-items:center;">
-              <div style="font-size:30px;" aria-hidden="true"><span data-wx-icon>🌡️</span></div>
-              <div>
-                <div style="font-weight:900; font-size:1.3rem;"><span data-wx-temp>—</span></div>
-                <div class="small" data-wx-sub>Pickering • now</div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="kicker reveal">
+          <span class="dot" aria-hidden="true"></span>
+          Transparent pricing • Parts approved first • Appointment-only
+        </div>
+
+        <h1 class="page-title reveal">Services &amp; pricing</h1>
+        <p class="lede reveal">
+          Below are typical service packages. Final pricing can vary based on bike condition, parts required, and travel distance.
+          We’ll confirm scope and cost before starting.
+        </p>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3>Quick safety check</h3>
+            <p class="muted">Fast assessment for brakes, tyres, drivetrain basics, and safety-critical issues.</p>
+            <ul class="list">
+              <li>Brake function check</li>
+              <li>Tyre pressure &amp; tread check</li>
+              <li>Drivetrain quick inspection</li>
+              <li>Basic bolt safety check</li>
+            </ul>
+            <div class="price-row">
+              <span class="price">From $45</span>
+              <a class="btn btn-ghost" href="contact.html">Book</a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <h3>Standard tune-up</h3>
+            <p class="muted">Best for seasonal readiness and getting your bike riding smoothly again.</p>
+            <ul class="list">
+              <li>Brake adjustment</li>
+              <li>Shifting adjustment</li>
+              <li>Lubrication &amp; torque check</li>
+              <li>Safety inspection</li>
+            </ul>
+            <div class="price-row">
+              <span class="price">From $110</span>
+              <a class="btn btn-ghost" href="contact.html">Book</a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <h3>Full tune-up</h3>
+            <p class="muted">For bikes that feel rough, noisy, or inconsistent—deep clean + dial-in.</p>
+            <ul class="list">
+              <li>Standard tune-up included</li>
+              <li>Drivetrain deep clean (as needed)</li>
+              <li>Cable/housing assessment</li>
+              <li>Test ride &amp; final adjustments</li>
+            </ul>
+            <div class="price-row">
+              <span class="price">From $175</span>
+              <a class="btn btn-ghost" href="contact.html">Book</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="split reveal" style="margin-top:24px;">
+          <div class="split-left">
+            <h2>Common repairs</h2>
+            <p class="muted">We handle most mechanical repairs and maintenance tasks.</p>
+
+            <div class="grid-2">
+              <div class="card compact">
+                <h3>Flat repair</h3>
+                <p class="small">Tube replacement, tyre inspection, and pressure set correctly.</p>
+              </div>
+              <div class="card compact">
+                <h3>Brake service</h3>
+                <p class="small">Pads, rotors, bleeding (where applicable), alignment, and feel.</p>
+              </div>
+              <div class="card compact">
+                <h3>Drivetrain</h3>
+                <p class="small">Chain, cassette, derailleur tuning, and shifting issues.</p>
+              </div>
+              <div class="card compact">
+                <h3>Wheel issues</h3>
+                <p class="small">Minor truing, spoke check, hub assessment (as needed).</p>
               </div>
             </div>
           </div>
-        </div>
-        <p class="small" style="margin-top:14px;">Mobile service is appointment-only. For the fastest booking, request a quote.</p>
-      </div>
-    </div>
-  </dialog>
 
-  <main id="main">
-    <section class="hero">
-      <div class="container">
-        <div class="kicker reveal"><span class="dot" aria-hidden="true"></span> Premium mobile service • appointment only</div>
-        <h1 class="reveal">Services & typical pricing</h1>
-        <p class="lede reveal">
-          Pricing ranges are typical labour estimates (CAD). Parts are extra. We confirm scope + estimate before paid work.
-        </p>
-        <div class="cta-row reveal">
+          <div class="split-right">
+            <figure class="media reveal">
+              <img src="images/bike-brake-adjustment.jpg" alt="Close-up of bicycle brake adjustment during service." loading="lazy" />
+            </figure>
+
+            <figure class="media reveal" style="margin-top:12px;">
+              <img src="images/bike-tune-up-drivetrain.jpg" alt="Close-up of bicycle drivetrain being tuned." loading="lazy" />
+            </figure>
+          </div>
+        </div>
+
+        <div class="cta-band reveal">
+          <div>
+            <h3 style="margin:0 0 6px;">Not sure what you need?</h3>
+            <p class="muted" style="margin:0;">Describe the issue and we’ll recommend the right service.</p>
+          </div>
           <a class="btn btn-primary" href="contact.html">Request a Quote</a>
-          <a class="btn btn-ghost" href="tel:+14168887566">Call 416-888-7566</a>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="reveal">Common repairs</h2>
-        <p class="sub reveal">Includes on-site options where appropriate. Premium service and scheduling included.</p>
-
-        <table class="table reveal" aria-label="Service pricing table">
-          <thead>
-            <tr><th>Service</th><th>What’s included</th><th>Typical range</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Flat repair</strong></td>
-              <td>Tube swap or patch (if possible), tyre inspection, pressure check</td>
-              <td>$35–$65 + tube/parts</td>
-            </tr>
-            <tr>
-              <td><strong>Brake adjustment</strong></td>
-              <td>Align, tension, pad check, quick safety test</td>
-              <td>$40–$75</td>
-            </tr>
-            <tr>
-              <td><strong>Brake pads (install)</strong></td>
-              <td>Install pads + adjust (pads extra)</td>
-              <td>$55–$95 + pads</td>
-            </tr>
-            <tr>
-              <td><strong>Shifting adjustment</strong></td>
-              <td>Indexing, limits, cable tension, test shift</td>
-              <td>$55–$95</td>
-            </tr>
-            <tr>
-              <td><strong>Basic tune-up</strong></td>
-              <td>Brakes + shifting check, bolts, tyre pressure, safety inspection</td>
-              <td>$140–$220</td>
-            </tr>
-            <tr>
-              <td><strong>Full tune-up</strong></td>
-              <td>Deeper adjustments, drivetrain clean (light), safety inspection, test ride</td>
-              <td>$260–$390</td>
-            </tr>
-            <tr>
-              <td><strong>Pickup & drop-off (within Pickering)</strong></td>
-              <td>Scheduled pickup and return (contactless available)</td>
-              <td>$35–$75</td>
-            </tr>
-            <tr>
-              <td><strong>Mobile call-out (within Pickering)</strong></td>
-              <td>On-site appointment window + setup</td>
-              <td>$35–$85</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p class="small reveal" style="margin-top:14px;">
-          Exact fees depend on timing, distance, and service scope. We confirm total pricing before proceeding.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container split">
-        <div class="card reveal media-card">
-          <div>
-            <h3>Brakes & safety</h3>
-            <p>We prioritize safe stopping power, clean cable routing, and reliable setup.</p>
-          </div>
-          <img alt="Bicycle brake caliper closeup" src="https://source.unsplash.com/featured/600x600?bicycle,brakes" />
-        </div>
-        <div class="card reveal media-card">
-          <div>
-            <h3>Tyres & flats</h3>
-            <p>Fast diagnosis and a professional fix—patch or replace depending on what’s best.</p>
-          </div>
-          <img alt="Bicycle tyre and wheel closeup" src="https://source.unsplash.com/featured/600x600?bicycle,tire" />
-        </div>
-      </div>
-    </section>
-
+    <!-- FAQ reuse -->
     <section class="section">
       <div class="container">
         <h2 class="reveal">FAQ</h2>
-        <p class="sub reveal">Professional policies for mobile service, pickups/drop-offs, parts approval, and billing.</p>
+        <div class="faq">
+          <div class="card reveal">
+            <h3>How do appointments work?</h3>
+            <p>
+              All services are by appointment only. We offer three options: mobile on-site repair, pickup &amp; drop-off,
+              or scheduled drop-offs. We’ll confirm a time window and the best service option based on your issue.
+            </p>
+          </div>
 
-        <div class="stack reveal">
-          <details>
-            <summary>Are you appointment-only?</summary>
-            <p>Yes. All services are by appointment only. We operate 7:00am–9:00pm and confirm an appointment window that fits your schedule.</p>
-          </details>
+          <div class="card reveal">
+            <h3>How do parts work?</h3>
+            <p>
+              We use high-quality parts and we always confirm with you before purchasing or installing anything.
+              If we discover additional parts are needed during the repair, we’ll contact you with options and pricing.
+            </p>
+          </div>
 
-          <details>
-            <summary>Do you repair on-site, or do you take the bike?</summary>
-            <p>Both. Many issues can be handled on-site (flats, adjustments, safety checks). For deeper work, we can arrange pickup/drop-off or a scheduled drop-off appointment.</p>
-          </details>
+          <div class="card reveal">
+            <h3>What if I don’t want to proceed after diagnosis?</h3>
+            <p>
+              If you choose not to proceed after we diagnose the issue, you’ll only be charged for the completed portion
+              of work (for example: diagnosis, labour already performed, or any agreed call-out). We’ll keep it fair and clear.
+            </p>
+          </div>
 
-          <details>
-            <summary>How do pickup and drop-off work?</summary>
-            <p>We schedule a pickup window, transport the bike for service, then return it in a scheduled drop-off window. Contactless options are available.</p>
-          </details>
-
-          <details>
-            <summary>What is contactless pickup/drop-off?</summary>
-            <p>We can provide a lock with a code. You secure the bike on your porch or designated spot, we arrive, unlock and pick it up, then return it and re-secure it. Afterwards, we pick up our lock in a follow-up window.</p>
-          </details>
-
-          <details>
-            <summary>Do you use high-quality parts?</summary>
-            <p>Yes. We use high-quality parts and materials. If parts are needed, we contact you to confirm options and pricing before purchasing anything.</p>
-          </details>
-
-          <details>
-            <summary>What if you discover additional issues mid-repair?</summary>
-            <p>We pause and contact you to approve any additional work and parts. If you decide not to proceed, you’ll receive a fair prorated labour charge for the time already spent and we’ll return the bike as-is (or reassemble safely if needed).</p>
-          </details>
-
-          <details>
-            <summary>Do you provide estimates?</summary>
-            <p>Yes. We provide a rough estimate based on your description and refine it after inspection. Final totals are confirmed before any paid work begins.</p>
-          </details>
-        </div>
-
-        <div class="cta-row reveal" style="margin-top:18px;">
-          <a class="btn btn-primary" href="contact.html">Request a Quote</a>
-          <a class="btn btn-ghost" href="tel:+14168887566">Call 416-888-7566</a>
+          <div class="card reveal">
+            <h3>Do you work on e-bikes?</h3>
+            <p>
+              We can handle many common mechanical services on e-bikes (brakes, tyres, drivetrain). For electrical issues
+              or proprietary systems, we’ll advise the best next step.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
-      <div class="small">
-        <strong>Okafo and Son Professional Bicycle Repair</strong><br />
-        Pickering, ON • Appointment only (7:00am–9:00pm)<br />
-        <a href="tel:+14168887566">416-888-7566</a>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Okafo and Son</strong><br />
+        <span class="small">Professional Bicycle Repair • Pickering</span>
       </div>
-      <div class="small">
-        Mobile service • Pickup/drop-off available<br />
-        © <span id="year"></span> Okafo and Son
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="tel:+14168887566">416-888-7566</a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="script.js" defer></script>
 </body>
 </html>

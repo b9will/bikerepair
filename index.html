@@ -2,212 +2,335 @@
 <html lang="en-CA">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Okafo and Son Professional Bicycle Repair | Mobile Bike Repair Pickering</title>
-  <meta name="description" content="Professional mobile bicycle repair in Pickering, ON. On-site service, scheduled drop-offs (appointment only), and pickup/drop-off available. 20+ years mechanic experience. Call 416-888-7566." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;550;650;750;850&family=Space+Grotesk:wght@500;650;750&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Okafo and Son • Mobile Bicycle Repair in Pickering</title>
+  <meta name="description" content="Professional mobile bicycle repair in Pickering. Appointment-only: on-site service, pickup & drop-off, or scheduled drop-offs. 20+ years experience." />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
 
-  <header>
-    <!-- Alert bar -->
-    <div class="alertbar" data-alertbar>
-      <div class="container alertbar-inner">
-        <p><strong>Get your bike ready for spring.</strong> Save <strong>10%</strong> on all bookings before <strong>March 1</strong>.</p>
-        <button class="iconbtn" type="button" aria-label="Dismiss promo" data-alert-dismiss>✕</button>
+<body>
+  <!-- Alert banner -->
+  <div class="banner" role="region" aria-label="Promotion" data-banner>
+    <div class="container banner-inner">
+      <div class="banner-text">
+        <strong>Get your bike ready for spring.</strong> Save <strong>10%</strong> on all bookings before <strong>March 1</strong>.
+      </div>
+      <button class="banner-close" type="button" aria-label="Dismiss promotion" data-banner-close>✕</button>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Okafo and Son Home">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Okafo and Son</span>
+      </a>
+
+      <nav class="navlinks nav-desktop" aria-label="Primary">
+        <a data-nav href="services.html">Services & Pricing</a>
+        <a data-nav href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+
+        <!-- Subtle weather pill (desktop) -->
+        <button class="weather-pill" type="button" data-weather-open aria-label="Open riding weather">
+          <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+          <span class="weather-pill-temp" data-weather-temp>—</span>
+          <span class="weather-pill-label">Pickering</span>
+        </button>
+      </nav>
+
+      <!-- Mobile controls -->
+      <div class="nav-mobile">
+        <button class="weather-pill is-compact" type="button" data-weather-open aria-label="Open riding weather">
+          <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+          <span class="weather-pill-temp" data-weather-temp>—</span>
+        </button>
+
+        <button class="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu-overlay" data-menu-open>
+          <span class="hamburger-lines" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
 
-    <div class="container nav">
-      <a class="brand" href="index.html" aria-label="Home">
-        <span class="mark" aria-hidden="true"></span>
-        <span class="brand-name">Okafo and Son</span>
-      </a>
+    <!-- Full-screen menu overlay -->
+    <div class="menu-overlay" id="menu-overlay" hidden>
+      <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="menu-top">
+          <div class="menu-brand">
+            <span class="mark" aria-hidden="true"></span>
+            <span>Okafo and Son</span>
+          </div>
 
-      <nav class="nav-mid" aria-label="Primary">
-        <a data-nav href="services.html">Services & Pricing</a>
-        <a data-nav href="contact.html">Contact</a>
-      </nav>
+          <button class="menu-close" type="button" aria-label="Close menu" data-menu-close>✕</button>
+        </div>
 
-      <div class="nav-right">
-        <a class="phone-link" href="tel:+14168887566" aria-label="Call 416-888-7566">416-888-7566</a>
-        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+        <div class="menu-links">
+          <a href="services.html">Services & Pricing</a>
+          <a href="contact.html">Contact</a>
+          <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+          <a class="btn" href="tel:+14168887566">Call: 416-888-7566</a>
+        </div>
 
-        <!-- Weather pill (click opens modal) -->
-        <button class="weather-pill" type="button" data-weather-btn aria-haspopup="dialog" aria-label="Riding weather in Pickering">
-          <span class="wx-ic" aria-hidden="true"><span data-wx-icon>🌡️</span></span>
-          <span class="wx-meta">
-            <span class="wx-top"><span data-wx-temp>—</span></span>
-            <span class="wx-sub" data-wx-sub>Riding weather</span>
-          </span>
-        </button>
+        <div class="menu-meta">
+          <div class="menu-note">
+            <strong>Appointment-only</strong><br />
+            Mobile on-site • Pickup/Drop-off • Scheduled drop-offs
+          </div>
+
+          <button class="menu-weather" type="button" data-weather-open>
+            <span class="weather-pill-icon" aria-hidden="true"><span data-weather-icon>⛅</span></span>
+            <span>
+              <strong><span data-weather-temp>—</span></strong> &nbsp; Riding weather<br />
+              <span class="small">Pickering • now</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather modal -->
+    <div class="modal" id="weather-modal" hidden>
+      <div class="modal-backdrop" data-weather-close></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="Riding weather">
+        <div class="modal-head">
+          <div>
+            <strong>Riding weather</strong><br />
+            <span class="small">Pickering • now</span>
+          </div>
+          <button class="modal-close" type="button" aria-label="Close weather" data-weather-close>✕</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="weather-row">
+            <div class="weather-big-icon" aria-hidden="true"><span data-weather-icon>⛅</span></div>
+            <div>
+              <div class="weather-big-temp"><span data-weather-temp>—</span></div>
+              <div class="small" data-weather-status>Loading…</div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:14px;">
+            <h3 style="margin:0 0 8px;">Service hours</h3>
+            <p style="margin:0;" class="small">
+              7:00am–9:00pm • Appointment-only<br />
+              Mobile service, pickup/drop-off, or scheduled drop-offs.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Weather modal -->
-  <dialog data-weather-dialog aria-label="Riding weather details">
-    <div class="modal" role="document">
-      <div class="modal-head">
-        <h3>Riding weather</h3>
-        <button class="iconbtn" type="button" aria-label="Close weather" data-weather-close>✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="modal-grid">
-          <div class="card">
-            <h3 style="margin:0 0 6px;">Pickering, ON</h3>
-            <p class="small" style="margin:0;">Current conditions (approx.)</p>
-          </div>
-          <div class="card">
-            <div style="display:flex; gap:12px; align-items:center;">
-              <div style="font-size:30px;" aria-hidden="true"><span data-wx-icon>🌡️</span></div>
-              <div>
-                <div style="font-weight:900; font-size:1.3rem;"><span data-wx-temp>—</span></div>
-                <div class="small" data-wx-sub>Pickering • now</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p class="small" style="margin-top:14px;">
-          For the fastest booking, include your location, bike type, and issue. Mobile service is appointment-only.
-        </p>
-      </div>
-    </div>
-  </dialog>
-
-  <main id="main">
+  <main>
+    <!-- Hero -->
     <section class="hero">
   <div class="container">
-    <div class="reveal">
-      <div class="kicker">
-        <span class="dot" aria-hidden="true"></span>
-        Pickering • Appointment-only • Mobile + Pickup/Drop-off
+    <div class="hero-wrap reveal">
+
+      <!-- LEFT: hero copy -->
+      <div>
+        <div class="kicker">
+          <span class="dot" aria-hidden="true"></span>
+          Pickering • Appointment-only • Mobile + Pickup/Drop-off
+        </div>
+
+        <h1>Back on the road faster—with a bike that feels new again.</h1>
+
+        <p class="lede">
+          Professional repairs and tune-ups with convenient options: mobile on-site service, pickup & drop-off,
+          or scheduled drop-offs by appointment. Clear approvals, high-quality parts, and work done right.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="contact.html">Request a Quote</a>
+          <a class="btn btn-ghost" href="services.html">See Services & Pricing</a>
+        </div>
+
+        <div class="tags" aria-label="Highlights">
+          <span class="tag">20+ years experience</span>
+          <span class="tag">Parts approved first</span>
+          <span class="tag">Contactless option</span>
+        </div>
       </div>
 
-      <h1>Back on the road faster, <br> with a bike that feels new again.</h1>
+      <!-- RIGHT: hero image + chat overlay -->
+      <div class="hero-media" aria-label="Customer text conversation">
+        <img src="images/bike-ready-to-ride.jpg" alt="A freshly serviced bike ready to ride">
 
-      <p class="lede">
-        Professional repairs and tune-ups with convenient options: mobile on-site service, pickup & drop-off,
-        or scheduled drop-offs by appointment. Clear approvals, high-quality parts, and work done right.
-      </p>
+        <div class="chat" aria-hidden="true">
+          <div class="bubble them">
+            Bike feels brand new. Brakes are perfect. 🙌
+            <small>Customer • 2:18pm</small>
+          </div>
 
-      <div class="cta-row">
-        <a class="btn btn-primary" href="contact.html">Request a Quote</a>
-        <a class="btn btn-ghost" href="services.html">See Services & Pricing</a>
+          <div class="bubble us">
+            Love to hear it. Want us to pick it up for a spring tune-up in 2–3 weeks?
+            <small>Okafo & Son • 2:19pm</small>
+          </div>
+
+          <div class="bubble them">
+            Yes please. Can you do contactless porch pickup?
+            <small>Customer • 2:20pm</small>
+          </div>
+
+          <div class="bubble us">
+            Absolutely — we’ll confirm the window + drop a lock code for pickup.
+            <small>Okafo & Son • 2:21pm</small>
+          </div>
+        </div>
       </div>
 
-      <div class="tags" aria-label="Highlights">
-        <span class="tag">20+ years experience</span>
-        <span class="tag">Parts approved first</span>
-        <span class="tag">Contactless option</span>
-      </div>
     </div>
   </div>
 </section>
 
 
+    <!-- Service options -->
     <section class="section">
       <div class="container">
         <h2 class="reveal">Service options</h2>
-        <p class="sub reveal">Choose what’s easiest: we come to you, we pick up, or you drop off by appointment.</p>
+        <p class="muted reveal">Choose what’s easiest: we come to you, we pick up, or you drop off by appointment.</p>
 
         <div class="grid-3">
-          <div class="card reveal media-card">
-            <div>
-              <h3>Mobile on-site repair</h3>
-              <p>Great for flats, adjustments, safety checks, and quick fixes where your bike is.</p>
-            </div>
-            <img alt="Service van for mobile repairs" src="https://source.unsplash.com/featured/600x600?service,van" />
-          </div>
+          <article class="card reveal">
+            <h3>Mobile on-site repair</h3>
+            <p>Great for flats, adjustments, safety checks, and quick fixes where your bike is.</p>
+            <figure class="media">
+              <img src="images/mobile-bike-repair-van.jpg" alt="Mobile bicycle repair van parked in a neighbourhood." loading="lazy" />
+            </figure>
+          </article>
 
-          <div class="card reveal media-card">
-            <div>
-              <h3>Pickup & drop-off</h3>
-              <p>We pick up your bike, repair it, and return it—ideal for tune-ups and deeper work.</p>
-            </div>
-            <img alt="Cyclist with a bike outside a home" src="https://source.unsplash.com/featured/600x600?bike,home" />
-          </div>
+          <article class="card reveal">
+            <h3>Pickup &amp; drop-off</h3>
+            <p>We’ll collect your bike, service it, and return it—perfect for busy schedules.</p>
+            <figure class="media">
+              <img src="images/contactless-bike-pickup-porch.jpg" alt="A bicycle secured on a porch for contactless pickup." loading="lazy" />
+            </figure>
+          </article>
 
-          <div class="card reveal media-card">
-            <div>
-              <h3>Scheduled drop-offs</h3>
-              <p>Drop-offs are appointment only (home-based workshop). Timing is confirmed in advance.</p>
+          <article class="card reveal">
+            <h3>Drop-off by appointment</h3>
+            <p>Scheduled drop-offs for tune-ups, brake work, drivetrain service, and diagnostics.</p>
+            <figure class="media">
+              <img src="images/bicycle-workbench-tools.jpg" alt="A clean bicycle workbench with organised tools." loading="lazy" />
+            </figure>
+          </article>
+        </div>
+
+        <div class="split reveal" style="margin-top:22px;">
+          <div class="split-left">
+            <h3>Professional, transparent, and convenient.</h3>
+            <p class="muted">
+              We confirm parts and pricing before purchasing or installing anything. If we discover additional needs during service,
+              we’ll contact you with options and next steps.
+            </p>
+          </div>
+          <div class="split-right">
+            <div class="card compact">
+              <h3 style="margin:0 0 8px;">Quick booking note</h3>
+              <p class="small" style="margin:0;">
+                Appointment-only • 7:00am–9:00pm<br />
+                Pickering + nearby when scheduling allows
+              </p>
             </div>
-            <img alt="Bicycle being serviced in a workshop" src="https://source.unsplash.com/featured/600x600?bicycle,workshop" />
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container split">
-        <div class="card reveal">
-          <h3>How appointments work</h3>
-          <ol class="list">
-            <li>Request a quote with bike type, issue, and your location in Pickering.</li>
-            <li>We confirm the best service option and time window.</li>
-            <li>We complete work after confirming any parts and pricing.</li>
-          </ol>
-        </div>
-        <div class="card reveal">
-          <h3>Professional approach</h3>
-          <ul class="list">
-            <li>Parts are high-quality and approved with you before purchase.</li>
-            <li>If additional issues are discovered, we contact you before proceeding.</li>
-            <li>If you decline additional work, labour is prorated fairly.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
+    <!-- FAQ -->
     <section class="section">
       <div class="container">
-        <div class="card reveal">
-          <h3>Book before March 1 for 10% off</h3>
-          <p>Quickest next step: request a quote. We’ll confirm your appointment window and best service option.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="contact.html">Request a Quote</a>
-            <a class="btn btn-ghost" href="services.html">Services & Pricing</a>
+        <h2 class="reveal">FAQ</h2>
+
+        <div class="faq">
+          <div class="card reveal">
+            <h3>How do appointments work?</h3>
+            <p>
+              All services are by appointment only. We offer three options: mobile on-site repair, pickup &amp; drop-off,
+              or scheduled drop-offs. We’ll confirm a time window and the best service option based on your issue.
+            </p>
           </div>
+
+          <div class="card reveal">
+            <h3>What areas do you service?</h3>
+            <p>
+              We’re based in Pickering and service nearby areas when scheduling allows. Share your neighbourhood
+              or nearest intersection and we’ll confirm availability.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3>What are your operating hours?</h3>
+            <p>7:00am–9:00pm, appointment-only. Times can vary based on route planning and current bookings.</p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Do you offer contactless pickup &amp; drop-off?</h3>
+            <p>
+              Yes. For porch pickup, we can provide a lock with a code. You secure the bike to a safe pickup point,
+              we retrieve it, complete the service, return the bike, and then collect our lock.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3>How do parts work?</h3>
+            <p>
+              We use high-quality parts and we always confirm with you before purchasing or installing anything.
+              If we discover additional parts are needed during the repair, we’ll contact you with options and pricing.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3>What if I don’t want to proceed after diagnosis?</h3>
+            <p>
+              If you choose not to proceed after we diagnose the issue, you’ll only be charged for the completed portion
+              of work (for example: diagnosis, labour already performed, or any agreed call-out). We’ll keep it fair and clear.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Do you work on e-bikes?</h3>
+            <p>
+              We can handle many common mechanical services on e-bikes (brakes, tyres, drivetrain). For electrical issues
+              or proprietary systems, we’ll advise the best next step.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3>How do I get the fastest quote?</h3>
+            <p>
+              Include your bike type, the issue, your location, and any timing constraints. Photos or a quick video are helpful.
+            </p>
+          </div>
+        </div>
+
+        <div class="cta-band reveal">
+          <div>
+            <h3 style="margin:0 0 6px;">Ready to book?</h3>
+            <p class="muted" style="margin:0;">Tell us what’s going on and we’ll confirm next steps.</p>
+          </div>
+          <a class="btn btn-primary" href="contact.html">Request a Quote</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-grid">
-      <div class="small">
-        <strong>Okafo and Son Professional Bicycle Repair</strong><br />
-        Pickering, ON • Appointment only (7:00am–9:00pm)<br />
-        <a href="tel:+14168887566">416-888-7566</a>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Okafo and Son</strong><br />
+        <span class="small">Professional Bicycle Repair • Pickering</span>
       </div>
-      <div class="small">
-        Mobile service • Pickup/drop-off available<br />
-        © <span id="year"></span> Okafo and Son
+      <div class="footer-links">
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="tel:+14168887566">416-888-7566</a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BicycleStore",
-    "name":"Okafo and Son Professional Bicycle Repair",
-    "telephone":"+1-416-888-7566",
-    "areaServed":"Pickering, ON",
-    "openingHours":"Mo-Su 07:00-21:00",
-    "description":"Professional mobile bicycle repair in Pickering. Appointment-only service: on-site repairs, pickup & drop-off, and scheduled drop-offs. 20+ years professional bicycle mechanic experience."
-  }
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
